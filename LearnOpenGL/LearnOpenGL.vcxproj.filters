@@ -18,5 +18,8 @@
     <ClCompile Include="01_getting_started\01_hello_window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="01_getting_started\02_hello_triangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
