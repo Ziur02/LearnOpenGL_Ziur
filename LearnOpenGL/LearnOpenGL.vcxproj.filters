@@ -21,5 +21,8 @@
     <ClCompile Include="01_getting_started\02_hello_triangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="01_getting_started\02_hello_triangle_exercise.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

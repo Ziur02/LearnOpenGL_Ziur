@@ -13,19 +13,28 @@ const unsigned int SCR_HEIGHT = 600;
 
 // 顶点着色器代码
 const char* vertexShaderSource = "#version 330 core\n"
-	"layout (location = 0) in vec3 aPos;\n"
-	"void main()\n"
-	"{\n"
-	"   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-	"}\0";
+"layout (location = 0) in vec3 aPos;\n"
+"void main()\n"
+"{\n"
+"   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+"}\0";
 
-// 片元着色器代码
-const char* fragmentShaderSource = "#version 330 core\n"
-	"out vec4 FragColor;\n"
-	"void main()\n"
-	"{\n"
-	"   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-	"}\n\0";
+// 片元着色器代码1
+const char* fragmentShaderSource1 = "#version 330 core\n"
+"out vec4 FragColor;\n"
+"void main()\n"
+"{\n"
+"   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+"}\n\0";
+
+// 片元着色器代码2
+const char* fragmentShaderSource2 = "#version 330 core\n"
+"out vec4 FragColor;\n"
+"void main()\n"
+"{\n"
+"   FragColor = vec4(1.0f, 1.0f, 0.0f, 1.0f);\n"
+"}\n\0";
+
 
 int main()
 {
@@ -60,31 +69,55 @@ int main()
 	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
 	glCompileShader(vertexShader);
 	// 编译片元着色代码
-	unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-	glCompileShader(fragmentShader);
+	unsigned int fragmentShaderOrange = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fragmentShaderOrange, 1, &fragmentShaderSource1, NULL);
+	glCompileShader(fragmentShaderOrange);
+	unsigned int fragmentShaderYellow = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fragmentShaderYellow, 1, &fragmentShaderSource2, NULL);
+	glCompileShader(fragmentShaderYellow);
 	// 链接shader
-	unsigned int shaderProgram = glCreateProgram();
-	glAttachShader(shaderProgram, vertexShader);
-	glAttachShader(shaderProgram, fragmentShader);
-	glLinkProgram(shaderProgram);
+	unsigned int shaderProgram1 = glCreateProgram();
+	glAttachShader(shaderProgram1, vertexShader);
+	glAttachShader(shaderProgram1, fragmentShaderOrange);
+	glLinkProgram(shaderProgram1);
+	unsigned int shaderProgram2 = glCreateProgram();
+	glAttachShader(shaderProgram2, vertexShader);
+	glAttachShader(shaderProgram2, fragmentShaderYellow);
+	glLinkProgram(shaderProgram2);
 
 	// 设置顶点数据
-	float vertices[] = {
+	float firstTriangle[] = {
 		-0.5, -0.5f, 0.0f, // left
 		0.5f, -0.5f, 0.0f, // right
 		0.0f, 0.5f, 0.0f   // top
 	};
+	float secondTriangle[] = {
+		0.0f, 0.5f, 0.0f,
+		0.5f, -0.5f, 0.0f,
+		0.5f, 0.5f, 0.0f
+	};
 
-	// 创建一个顶点数组对象VAO和一个顶点缓冲对象VBO
-	unsigned int VBO, VAO;
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
+	// 创建两个顶点数组对象VAO和两个顶点缓冲对象VBO
+	unsigned int VBOs[2], VAOs[2];
+	glGenVertexArrays(2, VAOs);
+	glGenBuffers(2, VBOs);
+
+	// 第一个三角形
 	// 绑定VAO，绑定VBO到GL_ARRAY_BUFFER目标上
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBindVertexArray(VAOs[0]);
+	glBindBuffer(GL_ARRAY_BUFFER, VBOs[0]);
 	// 将顶点数组复制到缓冲中供OpenGL使用
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(firstTriangle), firstTriangle, GL_STATIC_DRAW);
+	// 设置顶点属性指针
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+
+	// 第二个三角形
+	// 绑定VAO，绑定VBO到GL_ARRAY_BUFFER目标上
+	glBindVertexArray(VAOs[1]);
+	glBindBuffer(GL_ARRAY_BUFFER, VBOs[1]);
+	// 将顶点数组复制到缓冲中供OpenGL使用
+	glBufferData(GL_ARRAY_BUFFER, sizeof(secondTriangle), secondTriangle, GL_STATIC_DRAW);
 	// 设置顶点属性指针
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
@@ -99,8 +132,11 @@ int main()
 		glClearColor(0.8f, 0, 0.4f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 		//绘制三角形
-		glUseProgram(shaderProgram);
-		glBindVertexArray(VAO);
+		glUseProgram(shaderProgram1);
+		glBindVertexArray(VAOs[0]);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glUseProgram(shaderProgram2);
+		glBindVertexArray(VAOs[1]);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 
 		// 检查并调用事件，交换缓冲
