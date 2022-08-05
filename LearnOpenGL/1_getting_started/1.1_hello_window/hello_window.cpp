@@ -50,8 +50,8 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// 检查并调用事件，交换缓冲
-		glfwPollEvents();
 		glfwSwapBuffers(window);
+		glfwPollEvents();
 	}
 
 	// 当渲染循环结束后，释放之前的资源

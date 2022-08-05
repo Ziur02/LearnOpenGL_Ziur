@@ -15,14 +15,38 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="01_getting_started\01_hello_window.cpp">
+    <ClCompile Include="1_getting_started\1.1_hello_window\hello_window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="01_getting_started\02_hello_triangle.cpp">
+    <ClCompile Include="1_getting_started\2.2_hello_triangle_indices\hello_triangle_indices.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="01_getting_started\02_hello_triangle_exercise.cpp">
+    <ClCompile Include="1_getting_started\2.3_hello_triangle_exercise\hello_triangle_exercise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="1_getting_started\3.1_shader_uniform\shader_uniform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_getting_started\2.1_hello_triangle\hello_triangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_getting_started\3.2_shader_interpolation\shader_interpolation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_getting_started\3.3_shader_class\shader_class.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="1_getting_started\3.3_shader_class\shader2.txt" />
+    <None Include="1_getting_started\3.3_shader_class\shader1.txt" />
   </ItemGroup>
 </Project>

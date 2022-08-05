@@ -131,7 +131,7 @@ int main()
 		// 渲染指令
 		glClearColor(0.8f, 0, 0.4f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-		//绘制三角形
+		// 绘制三角形
 		glUseProgram(shaderProgram1);
 		glBindVertexArray(VAOs[0]);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
@@ -140,8 +140,8 @@ int main()
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 
 		// 检查并调用事件，交换缓冲
-		glfwPollEvents();
 		glfwSwapBuffers(window);
+		glfwPollEvents();
 	}
 
 	// 当渲染循环结束后，释放之前的资源
