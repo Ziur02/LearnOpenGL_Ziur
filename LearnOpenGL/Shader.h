@@ -12,4 +12,7 @@ public:
 	const char* vertexSource;
 	const char* fragmentSource;
 	unsigned int ID;  //shader program id
+
+private:
+	void checkCompileErrors(unsigned int ID, std::string type);
 };

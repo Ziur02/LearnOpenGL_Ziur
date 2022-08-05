@@ -5,7 +5,6 @@
 
 #define GLEW_STATIC
 #include <GL/glew.h>
-#include <GLFW/glfw3.h>
 
 Shader::Shader(const char* vertexPath, const char* fragmentPath)
 {
@@ -43,15 +42,18 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
 		vertex = glCreateShader(GL_VERTEX_SHADER);
 		glShaderSource(vertex, 1, &vertexSource, NULL);
 		glCompileShader(vertex);
+		checkCompileErrors(vertex, "VERTEX");
 		// fragment shader
 		fragment = glCreateShader(GL_FRAGMENT_SHADER);
 		glShaderSource(fragment, 1, &fragmentSource, NULL);
 		glCompileShader(fragment);
+		checkCompileErrors(fragment, "FRAGMENT");
 		// 完整的shader程序
 		ID = glCreateProgram();
 		glAttachShader(ID, vertex);
 		glAttachShader(ID, fragment);
 		glLinkProgram(ID);
+		checkCompileErrors(ID, "PROGRAM");
 		//在编译、link完之后删除shader
 		glDeleteShader(vertex);
 		glDeleteShader(fragment);
@@ -66,3 +68,28 @@ void Shader::use()
 {
 	glUseProgram(ID);
 }
+
+void Shader::checkCompileErrors(unsigned int ID, std::string type)
+{
+	int success;
+	char infoLog[512];
+
+	if (type != "PROGRAM")
+	{
+		glGetShaderiv(ID, GL_COMPILE_STATUS, &success);
+		if (!success)
+		{
+			glGetShaderInfoLog(ID, 512, NULL, infoLog);
+			std::cout << "EOORO::SHADER_COMPILATION_ERROR of type: " << type << "\n" << infoLog << std::endl;
+		}
+	}
+	else
+	{
+		glGetProgramiv(ID, GL_LINK_STATUS, &success);
+		if (!success)
+		{
+			glGetProgramInfoLog(ID, 512, NULL, infoLog);
+			std::cout << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n" << infoLog << std::endl;
+		}
+	}
+};
