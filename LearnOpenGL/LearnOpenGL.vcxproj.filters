@@ -39,14 +39,21 @@
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderUni.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderUni.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="1_getting_started\3.3_shader_class\shader2.txt" />
     <None Include="1_getting_started\3.3_shader_class\shader1.txt" />
+    <None Include="1_getting_started\3.3_shader_class\basic.shader" />
   </ItemGroup>
 </Project>

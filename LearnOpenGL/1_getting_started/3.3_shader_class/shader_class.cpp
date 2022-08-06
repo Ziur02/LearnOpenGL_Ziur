@@ -3,7 +3,7 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "../../Shader.h"
+#include "../../ShaderUni.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
@@ -11,26 +11,6 @@ void processInput(GLFWwindow* window);
 // 窗口大小设置
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
-
-// 顶点着色器代码
-const char* vertexShaderSource = "#version 330 core\n"
-"layout (location = 0) in vec3 aPos;\n"
-"layout (location = 1) in vec3 aColor;\n"
-"out vec4 ourColor;\n"
-"void main()\n"
-"{\n"
-"   gl_Position = vec4(aPos, 1.0);\n"
-"	ourColor = vec4(aColor, 1.0);\n"
-"}\0";
-
-// 片元着色器代码
-const char* fragmentShaderSource = "#version 330 core\n"
-"out vec4 FragColor;\n"
-"in vec4 ourColor;\n"
-"void main()\n"
-"{\n"
-"   FragColor = ourColor;\n"
-"}\n\0";
 
 int main()
 {
@@ -60,22 +40,8 @@ int main()
 		return -1;
 	}
 
-	//// 编译顶点着色代码
-	//unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	//glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-	//glCompileShader(vertexShader);
-	//// 编译片元着色代码
-	//unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	//glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-	//glCompileShader(fragmentShader);
-	//// 链接shader
-	//unsigned int shaderProgram = glCreateProgram();
-	//glAttachShader(shaderProgram, vertexShader);
-	//glAttachShader(shaderProgram, fragmentShader);
-	//glLinkProgram(shaderProgram);
-
 	// 使用写好的Shader类编译shader程序
-	Shader ourShader("1_getting_started/3.3_shader_class/shader1.txt","1_getting_started/3.3_shader_class/shader2.txt");
+	Shader ourShader("1_getting_started/3.3_shader_class/basic.shader");
 	
 	// 设置顶点数据
 	float vertices[] = {
@@ -115,8 +81,8 @@ int main()
 		glClearColor(0.8f, 0, 0.4f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 		// 绘制三角形
-		//glUseProgram(shaderProgram);
 		ourShader.use();
+		ourShader.setFloat("someUniform", 1.0f);
 
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
