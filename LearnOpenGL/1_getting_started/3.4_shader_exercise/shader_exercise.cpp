@@ -12,6 +12,8 @@ void processInput(GLFWwindow* window);
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
+
+
 int main()
 {
 	// 初始化GLFW，设置版本号
@@ -41,8 +43,8 @@ int main()
 	}
 
 	// 使用写好的Shader类编译shader程序
-	Shader ourShader("1_getting_started/3.3_shader_class/basic.shader");
-	
+	Shader ourShader("1_getting_started/3.4_shader_exercise/position.shader");
+
 	// 设置顶点数据
 	float vertices[] = {
 		// 位置              // 颜色

@@ -42,6 +42,9 @@
     <ClCompile Include="ShaderUni.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="1_getting_started\3.4_shader_exercise\shader_exercise.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -55,5 +58,6 @@
     <None Include="1_getting_started\3.3_shader_class\shader2.txt" />
     <None Include="1_getting_started\3.3_shader_class\shader1.txt" />
     <None Include="1_getting_started\3.3_shader_class\basic.shader" />
+    <None Include="1_getting_started\3.4_shader_exercise\position.shader" />
   </ItemGroup>
 </Project>
