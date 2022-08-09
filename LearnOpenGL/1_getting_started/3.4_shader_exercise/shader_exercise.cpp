@@ -12,8 +12,6 @@ void processInput(GLFWwindow* window);
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
-
-
 int main()
 {
 	// 初始化GLFW，设置版本号
@@ -83,6 +81,9 @@ int main()
 		glClearColor(0.8f, 0, 0.4f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 		// 绘制三角形
+		float offset = 0.5f;
+		ourShader.setFloat("xOffset", offset);
+
 		ourShader.use();
 
 		glBindVertexArray(VAO);

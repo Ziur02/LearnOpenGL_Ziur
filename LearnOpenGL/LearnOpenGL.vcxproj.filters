@@ -45,6 +45,15 @@
     <ClCompile Include="1_getting_started\3.4_shader_exercise\shader_exercise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="1_getting_started\4.1_texture\texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_getting_started\4.2_texture_combined\texture_combined.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_getting_started\4.3_texture_exercise\texture_exercise.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -53,11 +62,17 @@
     <ClInclude Include="ShaderUni.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="1_getting_started\3.3_shader_class\shader2.txt" />
     <None Include="1_getting_started\3.3_shader_class\shader1.txt" />
     <None Include="1_getting_started\3.3_shader_class\basic.shader" />
     <None Include="1_getting_started\3.4_shader_exercise\position.shader" />
+    <None Include="1_getting_started\4.1_texture\texBasic.shader" />
+    <None Include="1_getting_started\4.2_texture_combined\texCombined.shader" />
+    <None Include="1_getting_started\4.3_texture_exercise\texExercise.shader" />
   </ItemGroup>
 </Project>
