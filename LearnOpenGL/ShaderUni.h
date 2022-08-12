@@ -10,10 +10,9 @@ struct ShaderProgramSource
 class Shader
 {
 private:
-	unsigned int ID;  //shader program id
 	void checkCompileErrors(unsigned int ID, std::string type);
-
 public:
+	unsigned int ID;  //shader program id
 	Shader(const std::string& filePath);
 	void use();
 	void setBool(const std::string& name, bool value) const;
