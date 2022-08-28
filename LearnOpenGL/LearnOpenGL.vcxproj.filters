@@ -66,6 +66,15 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="2_lighting\2.0_code refactoring\code_refactoring.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="2_lighting\2.1_color\color.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="2_lighting\2.2_basic_lighting\basic_lighting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -92,5 +101,8 @@
     <None Include="1_getting_started\5.1_transformations\transformations.shader" />
     <None Include="1_getting_started\6.1_coordinate_systems\coordinate_systems.shader" />
     <None Include="1_getting_started\7.1_camera\camera_class.shader" />
+    <None Include="2_lighting\2.0_code refactoring\code_refactoring.shader" />
+    <None Include="2_lighting\2.1_color\color.shader" />
+    <None Include="2_lighting\2.2_basic_lighting\basic_lighting.shader" />
   </ItemGroup>
 </Project>
