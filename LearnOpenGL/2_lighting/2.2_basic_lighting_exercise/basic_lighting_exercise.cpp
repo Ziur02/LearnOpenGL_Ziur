@@ -88,6 +88,10 @@ void processInput(GLFWwindow* window)
 		camera.ProcessKeyboard(LEFT, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
+		camera.ProcessKeyboard(UP, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+		camera.ProcessKeyboard(DOWN, deltaTime);
 }
 
 // 当窗口大小发生变化时，执行以下函数调整窗口大小，是一个回调函数
@@ -170,7 +174,7 @@ int main()
 
 	#pragma region Init Shader Program
 	// 使用写好的Shader类编译shader程序
-	Shader ourShader("2_lighting/2.2_basic_lighting/basic_lighting.shader");
+	Shader ourShader("2_lighting/2.2_basic_lighting_exercise/basic_lighting_exercise.shader");
 	#pragma endregion
 
 	#pragma region Model Data
@@ -280,8 +284,11 @@ float vertices[] = {
 		processInput(window);
 
 		// 清空缓冲
-		glClearColor(0.8f, 0, 0.4f, 1.0f);
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		// 使用sin与cos函数让光源在场景中移动
+		glm::vec3 lightPos = glm::vec3( sin(glfwGetTime()) * 10.0f, 10.0f, cos(glfwGetTime()) * 10.0f );
 
 		for (unsigned int i = 0; i < 10; i++)
 		{
@@ -309,9 +316,9 @@ float vertices[] = {
 			glUniformMatrix4fv(glGetUniformLocation(ourShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(model));
 			glUniform3f(glGetUniformLocation(ourShader.ID, "objColor"), 1.0f, 0.5f, 0.31f);
 			glUniform3f(glGetUniformLocation(ourShader.ID, "ambientColor"), 1.0f, 1.0f, 1.0f);
-			glUniform3f(glGetUniformLocation(ourShader.ID, "lightPos"), 10.0f, 10.0f, 5.0f);
+			glUniform3f(glGetUniformLocation(ourShader.ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
 			glUniform3f(glGetUniformLocation(ourShader.ID, "lightColor"), 1.0f, 1.0f, 1.0f);
-			glUniform3fv(glGetUniformLocation(ourShader.ID, "viewPos"), 1, &camera.cameraPos[0]);
+			glUniform3f(glGetUniformLocation(ourShader.ID, "cameraPos"), camera.cameraPos.x, camera.cameraPos.y, camera.cameraPos.z);
 
 			// 绑定VAO
 			glBindVertexArray(VAO);

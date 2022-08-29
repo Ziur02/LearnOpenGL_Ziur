@@ -57,6 +57,10 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 		cameraPos -= cameraRight * cameraSpeed;
 	if (direction == RIGHT)
 		cameraPos += cameraRight * cameraSpeed;
+	if (direction == UP)
+		cameraPos += cameraUp * cameraSpeed;
+	if (direction == DOWN)
+		cameraPos -= cameraUp * cameraSpeed;
 }
 
 void Camera::ProcessMouseScroll(float deltaY)

@@ -12,6 +12,7 @@ class Shader
 private:
 	void checkCompileErrors(unsigned int ID, std::string type);
 public:
+	void shader(){};
 	unsigned int ID;  //shader program id
 	Shader(const std::string& filePath);
 	void use();

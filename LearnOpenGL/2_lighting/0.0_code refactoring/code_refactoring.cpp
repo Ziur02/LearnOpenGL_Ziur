@@ -170,7 +170,7 @@ int main()
 
 	#pragma region Init Shader Program
 	// 使用写好的Shader类编译shader程序
-	Shader ourShader("2_lighting/2.0_code refactoring/code_refactoring.shader");
+	Shader ourShader("2_lighting/0.0_code refactoring/code_refactoring.shader");
 	#pragma endregion
 
 	#pragma region Model Data
