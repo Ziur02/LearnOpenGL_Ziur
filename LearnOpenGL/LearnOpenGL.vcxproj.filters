@@ -84,6 +84,30 @@
     <ClCompile Include="Material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="2_lighting\4.1_lighting_maps\lighting_maps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="2_lighting\3.1_materials\Material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="2_lighting\4.2_lighting_maps_emission\lighting_maps_emission.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="2_lighting\4.2_lighting_maps_emission\Material_emission.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="2_lighting\5.1_light_casters\light_casters.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DirLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PointLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpotLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -99,6 +123,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="2_lighting\3.1_materials\Material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="2_lighting\4.2_lighting_maps_emission\Material_emission.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DirLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpotLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -118,5 +157,9 @@
     <None Include="2_lighting\2.1_basic_lighting\basic_lighting.shader" />
     <None Include="2_lighting\2.2_basic_lighting_exercise\basic_lighting_exercise.shader" />
     <None Include="2_lighting\3.1_materials\materials.shader" />
+    <None Include="2_lighting\4.1_lighting_maps\lighting_maps.shader" />
+    <None Include="2_lighting\4.2_lighting_maps_emission\lighting_maps_emission.shader" />
+    <None Include="2_lighting\5.1_light_casters\light_casters.shader" />
+    <None Include="123.frag" />
   </ItemGroup>
 </Project>
