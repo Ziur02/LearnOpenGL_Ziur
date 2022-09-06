@@ -108,6 +108,12 @@
     <ClCompile Include="SpotLight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_model_loding\1.1_mesh\meshes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -140,6 +146,9 @@
     <ClInclude Include="SpotLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="1_getting_started\3.3_shader_class\shader2.txt" />
@@ -161,5 +170,6 @@
     <None Include="2_lighting\4.2_lighting_maps_emission\lighting_maps_emission.shader" />
     <None Include="2_lighting\5.1_light_casters\light_casters.shader" />
     <None Include="123.frag" />
+    <None Include="3_model_loding\1.1_mesh\meshes.shader" />
   </ItemGroup>
 </Project>

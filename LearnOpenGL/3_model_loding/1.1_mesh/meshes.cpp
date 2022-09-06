@@ -1,5 +1,4 @@
 #include <iostream>
-
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -14,6 +13,7 @@
 #include "../../DirLight.h"
 #include "../../PointLight.h"
 #include "../../SpotLight.h"
+#include "../../Mesh.h"
 
 // 整理出来一个加载texture到gpu的函数
 unsigned int LoadImageToGPU(const char* filepath, GLint internalFormat, GLenum format, int textureSlot)
@@ -195,7 +195,7 @@ int main()
 
 	#pragma region Init Shader Program
 	// 使用写好的Shader类编译shader程序
-	Shader ourShader("2_lighting/5.1_light_casters/light_casters.shader");
+	Shader ourShader("3_model_loding/1.1_mesh/meshes.shader");
 	#pragma endregion
 
 	#pragma region Init Material
@@ -269,25 +269,27 @@ int main()
 	#pragma endregion
 
 	#pragma region Init and Load Models to VAO, VBO
-	// 创建一个顶点数组对象VAO和一个顶点缓冲对象VBO
-	unsigned int VBO, VAO;
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	// 绑定VAO，绑定VBO到GL_ARRAY_BUFFER目标上
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	// 将顶点数组复制到缓冲中供OpenGL使用
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	// 设置顶点属性指针
-	// 位置属性
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-	// 法线属性
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(1);
-	// 纹理坐标属性
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	glEnableVertexAttribArray(2);
+	Mesh cube(vertices);
+
+	//// 创建一个顶点数组对象VAO和一个顶点缓冲对象VBO
+	//unsigned int VBO, VAO;
+	//glGenVertexArrays(1, &VAO);
+	//glGenBuffers(1, &VBO);
+	//// 绑定VAO，绑定VBO到GL_ARRAY_BUFFER目标上
+	//glBindVertexArray(VAO);
+	//glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	//// 将顶点数组复制到缓冲中供OpenGL使用
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	//// 设置顶点属性指针
+	//// 位置属性
+	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+	//glEnableVertexAttribArray(0);
+	//// 法线属性
+	//glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	//glEnableVertexAttribArray(1);
+	//// 纹理坐标属性
+	//glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+	//glEnableVertexAttribArray(2);
 	#pragma endregion
 
 	#pragma region Init and Load Textures
@@ -323,7 +325,7 @@ int main()
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		for (unsigned int i = 0; i < 10; i++)
+		for (unsigned int i = 0; i < 1; i++)
 		{
 			// 设置projection矩阵
 			projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
@@ -383,10 +385,12 @@ int main()
 			glUniform1f(glGetUniformLocation(ourShader.ID, "material.shininess"), ourMaterial.shininess);
 
 			// 绑定VAO
-			glBindVertexArray(VAO);
+			//glBindVertexArray(VAO);
 
 			//通过for循环画出10个经历不同model矩阵变换的立方体
-			glDrawArrays(GL_TRIANGLES, 0, 36);
+			//glDrawArrays(GL_TRIANGLES, 0, 36);
+
+			cube.draw(ourMaterial.shader);
 		}
 
 		// 检查并调用事件，交换缓冲

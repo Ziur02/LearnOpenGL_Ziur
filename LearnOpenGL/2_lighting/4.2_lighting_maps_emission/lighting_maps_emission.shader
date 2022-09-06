@@ -55,13 +55,13 @@ void main()
 	vec3 norm = normalize(Normal);
 	vec3 lightDir = normalize(lightPos - FragPos);
 	float diff = max(dot(norm, lightDir), 0.0);
-	vec3 diffuse = texture(material.diffuse, TexCoords).rgb * diff * vec3(0.5f, 0.5f, 0.5f);
+	vec3 ambient = texture(material.diffuse, TexCoords).rgb * diff * vec3(0.5f, 0.5f, 0.5f);
 
 	// specular
 	vec3 viewDir = normalize(cameraPos - FragPos);
 	vec3 reflectDir = reflect(-lightDir, norm);
 	float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
-	vec3 specular = texture(material.specular, TexCoords).rgb * spec * lightColor;
+	vec3 ambient = texture(material.specular, TexCoords).rgb * spec * lightColor;
 
 	// emission
 	vec3 emission = texture(material.emission, TexCoords).rgb;
