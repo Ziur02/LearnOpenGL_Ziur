@@ -114,6 +114,12 @@
     <ClCompile Include="3_model_loding\1.1_mesh\meshes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_model_loding\2.1_models\models.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -149,6 +155,12 @@
     <ClInclude Include="Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="1_getting_started\3.3_shader_class\shader2.txt" />
@@ -171,5 +183,8 @@
     <None Include="2_lighting\5.1_light_casters\light_casters.shader" />
     <None Include="123.frag" />
     <None Include="3_model_loding\1.1_mesh\meshes.shader" />
+    <None Include="packages.config" />
+    <None Include="3_model_loding\2.1_models\models.shader" />
+    <None Include="3_model_loding\2.1_models\test.shader" />
   </ItemGroup>
 </Project>

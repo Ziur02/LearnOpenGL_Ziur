@@ -275,8 +275,9 @@ int main()
 	//unsigned int VBO, VAO;
 	//glGenVertexArrays(1, &VAO);
 	//glGenBuffers(1, &VBO);
-	//// 绑定VAO，绑定VBO到GL_ARRAY_BUFFER目标上
+	//// 绑定VAO
 	//glBindVertexArray(VAO);
+	//// 绑定VBO到GL_ARRAY_BUFFER缓冲类型的缓冲上
 	//glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	//// 将顶点数组复制到缓冲中供OpenGL使用
 	//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -389,8 +390,8 @@ int main()
 
 			//通过for循环画出10个经历不同model矩阵变换的立方体
 			//glDrawArrays(GL_TRIANGLES, 0, 36);
-
-			cube.draw(ourMaterial.shader);
+			
+			cube.Draw(ourMaterial.shader);
 		}
 
 		// 检查并调用事件，交换缓冲

@@ -296,7 +296,6 @@ int main()
 	//texture1 = LoadImageToGPU("../resources/textures/container.jpg" , GL_RGB, GL_RGB, 0);
 	//unsigned int texture2;
 	//texture2 = LoadImageToGPU("../resources/textures/awesomeface.png", GL_RGBA, GL_RGBA, 0);
-
 	#pragma endregion
 
 	#pragma region Prepare MVP matrices

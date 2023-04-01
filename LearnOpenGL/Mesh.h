@@ -4,6 +4,7 @@
 #include <vector>
 #include "ShaderUni.h"
 #include <gl/glew.h>
+#include <iostream>
 
 struct Vertex {
 	glm::vec3 Position;
@@ -20,14 +21,13 @@ struct Texture {
 class Mesh
 {
 public:
-	Mesh(float vertices[]);
+	Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);
+	Mesh(float vertices[]); // 为了测试写的Mesh类，加一个只传入顶点的构造函数
 	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices;
 	std::vector<Texture> textures;
-
-	Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);
-
-	void draw(Shader& shader);
+	
+	void Draw(Shader& shader);
 
 private:
 	unsigned int VAO, VBO, EBO;
